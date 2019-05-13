@@ -1,0 +1,10 @@
+<?php
+returnarray (
+  'fname' => 'Иван',
+  'sname' => 'Иванов',
+  'email' => 'vanteevs@mail.ru',
+  'phone' => '89123456789',
+  'topic' => 'Бизнес',
+  'payment' => 'WebMoney',
+  'getMail' => 'yes',
+)
