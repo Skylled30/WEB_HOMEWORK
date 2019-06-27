@@ -2,7 +2,7 @@
 <html>
  <head>
   <meta charset="utf-8">
-  <title>Test_Form</title>
+  <title>Панель администратора</title>
  </head>
  <body>
  	<div>
