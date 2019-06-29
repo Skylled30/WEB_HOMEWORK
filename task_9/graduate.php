@@ -1,5 +1,5 @@
 <?php
-include_once "Student.php";
+include_once "student.php";
 class Graduate extends Student {
     protected $semestr=[];
     protected function get_prev_marks()
