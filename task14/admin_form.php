@@ -11,7 +11,7 @@
 <body>
 	<div>
 		<?php
-			$formclass->data_del();
+			$formclass->db_delete();
 		?>
 	</div>
 </body>
