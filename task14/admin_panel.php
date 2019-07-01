@@ -11,14 +11,14 @@
 <body>
 	<section>
 		<form action="admin_form.php" method="POST">
-		<div>
-			<?php
-				$formclass->data_read();
-			?>
-		</div>
-		<div class="delete_files">
-			<input type="submit" name="delete_files" value="Удалить">
-		</div>
+			<div>
+				<?php
+					$formclass->db_get();
+				?>
+			</div>
+			<div class="delete_files">
+				<input type="submit" name="delete_files" value="Удалить">
+			</div>
 		</form>
 	</section>
 </body>
