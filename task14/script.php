@@ -5,5 +5,6 @@ include 'formclass.php';
 $formclass = new formclass;
 $formclass->data_insert();
 $formclass->save();
-$formclass->sqlsave();
+$formclass->db_save();
+
 
