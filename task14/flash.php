@@ -1,27 +1,27 @@
 <?php
 class flash{
-	protected $ss = false;
+	protected $check = false;
     protected function start_session()
     {
-        if (!$this->ss)
+        if (!$this->check)
         {
             session_start();
-            $this->ss = true;
+            $this->check = true;
         }
     }
-	public function set($m){
+	public function set_data($m){
 		$this->start_session();
-		$_SESSION['fm']=$m;
+		$_SESSION['vary']=$m;
 	}
-	public function get(){
+	public function get_data(){
 		$this->start_session();
-		$m=$_SESSION['fm'];
+		$m = $_SESSION['vary'];
 		return $m;
 	}
-	  public function del(){
+	  public function delete_data(){
         $this->start_session();
-        if ( ! empty($_SESSION['fm'])){
-            unset($_SESSION['fm']);
+        if (!empty($_SESSION['vary'])){
+            unset($_SESSION['vary']);
         }
     }
 }
