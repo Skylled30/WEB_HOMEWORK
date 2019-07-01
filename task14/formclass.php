@@ -139,12 +139,21 @@ class formclass{
     public function get_pdo(){
         if (empty($this->_pdo))
         {
-            $this->_pdo = new PDO('mysql:host=localhost;dbname=myform','root',''); 
+            try {
+                $this->_pdo = new PDO('mysql:host=localhost;dbname=participants','root','');
+                foreach($this->_pdo->query('SELECT * from participants') as $row) {
+                    print_r($row);
+                }
+                $this->_pdo = null;
+            } catch (PDOException $e) {
+                print "Error!: " . $e->getMessage() . "<br/>";
+                die();
+            } 
         }
         return $this->_pdo;
     }
 
-    public function sqlsave()
+    public function db_save()
     {
         if ($this->validate())
         {
@@ -159,7 +168,7 @@ class formclass{
         return false;
     }
 
-    public function sqlget(){
+    public function db_get(){
         $sql = $this->get_pdo()->prepare('SELECT * FROM `'.$this->table.'` WHERE `deleted_at` is ?;');
         $sql->execute(array(NULL));
         $objects = [];
@@ -167,11 +176,11 @@ class formclass{
         {
             $str=$object->id."|".$object->fname."|".$object->sname."|".$object->email."|".$object->phone."|".$this->topic_list[$object->topic]."|".$this->payment_list[$object->paym]."|".$object->soglras."|".$object->created_at;
             $res = preg_replace("/ /","", $str);
-            echo "<input type='checkbox' name='f[]' value=".$res."><font color='blue'>".$str."</font><br>";
+            echo "<input type='checkbox' name='f[]' value=".$res.">".$str."<br>";
         }
     }
 
-    public function sqldel(){
+    public function db_delete(){
         if(empty($_POST['f'])){ 
                 echo "<h2>Вы ничего не выбрали!</h2>";
         } 
